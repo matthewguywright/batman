@@ -1,16 +1,17 @@
 <div class="col-9 mx-auto">
-  <div class="card mt-3 card-dark">
+  <div class="card mt-4 mb-4">
     <div class="card-header">
       {{headerTitle}}
     </div>
     <div class="card-body">
       <div class="row">
         <div class="col-12 text-right mb-3">
-          <a href="#" class="btn btn-primary active">1990s</a>
-          <a href="#" class="btn btn-secondary">2000s</a>
+          <a href="#" class="btn btn-primary active mr-2">1980's</a>
+          <a href="#" class="btn btn-primary active mr-2">1990's</a>
+          <a href="#" class="btn btn-secondary">2000's</a>
         </div>
       </div>
-      <div *ngFor="let movie of movies" class="card mb-3">
+      <div *ngFor="let movie of movies" class="card mb-4 card-dark">
         <div class="card-body">
           <div class="row">
             <div class="col-3">
@@ -21,10 +22,13 @@
                 <div class="col-12">
                   <h2 class="border-bottom pb-2">{{movie.Title}}</h2>
                 </div>
-                <div class="col-12 d-flex flex-column">
+                <div class="col-12">
                   <div class="row">
                     <div class="col-6 text-left">
-                      <p><span class="rating">{{movie.Rated}}</span> <span class="runtime">{{movie.Runtime}}</span></p>
+                      <p>
+                          <span class="rating badge badge-secondary mr-3">{{movie.Rated}}</span>
+                          <span class="runtime">{{movie.Runtime}}</span>
+                      </p>
                     </div>
                     <div class="col-6 text-right">
                       <p>{{movie.Released}}</p>
@@ -33,9 +37,9 @@
                       <p>{{movie.Plot}}</p>
                     </div>
                   </div>
-                  <div class="row">
+                  <div class="row mt-2">
                     <div class="col-12 text-right">
-                      <a target="_blank" href="https://www.imdb.com/title/{{movie.imdbID}}" class="btn btn-warning align-self-end">View on IMDB</a>
+                      <a target="_blank" href="https://www.imdb.com/title/{{movie.imdbID}}" class="btn btn-warning">View on IMDB</a>
                     </div>
                   </div>
                 </div>

@@ -32,7 +32,7 @@ export class MovieListComponent implements OnInit {
 
     getNewMoviePosterUrl(url: string) {
         const imgFileName = url.replace('https://m.media-amazon.com/images/M/', '');
-        console.log(`${this.localPosterImageUrl}${imgFileName}`);
+        return `${this.localPosterImageUrl}${imgFileName}`;
     }
 }
 export interface IMovie {
