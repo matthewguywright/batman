@@ -10,11 +10,11 @@
           <a href="#" class="btn btn-secondary">2000s</a>
         </div>
       </div>
-      <div *ngFor="let movie of masterMovieList" class="card mb-3">
+      <div *ngFor="let movie of movies" class="card mb-3">
         <div class="card-body">
           <div class="row">
             <div class="col-3">
-              <img class="img-fluid rounded img-thumbnail" src="./src/assets/images/{{movie.Poster}}" alt="Batman">
+              <img class="img-fluid rounded img-thumbnail" [src]="this.getNewMoviePosterUrl(movie.Poster)" alt="Batman">
             </div>
             <div class="col-9">
               <div class="row">
@@ -24,18 +24,18 @@
                 <div class="col-12 d-flex flex-column">
                   <div class="row">
                     <div class="col-6 text-left">
-                      <p><span class="rating">PG-13</span> <span class="runtime">140 min</span></p>
+                      <p><span class="rating">{{movie.Rated}}</span> <span class="runtime">{{movie.Runtime}}</span></p>
                     </div>
                     <div class="col-6 text-right">
-                      <p>{{movie.Year}}</p>
+                      <p>{{movie.Released}}</p>
                     </div>
                     <div class="col-12">
-                      <p>After training with his mentor, Batman begins his fight to free crime-ridden Gotham City from corruption.</p>
+                      <p>{{movie.Plot}}</p>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-12 text-right">
-                      <a href="https://www.imdb.com/title/{{movie.imdbID}}" class="btn btn-warning align-self-end">View on IMDB</a>
+                      <a target="_blank" href="https://www.imdb.com/title/{{movie.imdbID}}" class="btn btn-warning align-self-end">View on IMDB</a>
                     </div>
                   </div>
                 </div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Movie} from "./movie-list.component";
+import {IMovie, IMovieDetails} from "./movie-list.component";
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +18,10 @@ export class OmdbService {
   }
 
   getAllMovies() {
-    return this.http.get<Movie[]>(this.addApiKeyToUrl(this.batmanOmdbUrl));
+    return this.http.get<IMovie[]>(this.addApiKeyToUrl(this.batmanOmdbUrl));
   }
 
   getMovie(omdbId: string) {
-    return this.http.get<Movie>(this.addApiKeyToUrl(`${this.singleMovieUrl}${omdbId}`));
+    return this.http.get<IMovieDetails>(this.addApiKeyToUrl(`${this.singleMovieUrl}${omdbId}`));
   }
 }
