@@ -1,0 +1,52 @@
+<div class="col-9 mx-auto">
+  <div class="card mt-3 card-dark">
+    <div class="card-header">
+      {{headerTitle}}
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12 text-right mb-3">
+          <a href="#" class="btn btn-primary active">1990s</a>
+          <a href="#" class="btn btn-secondary">2000s</a>
+        </div>
+      </div>
+      <div *ngFor="let movie of masterMovieList" class="card mb-3">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-3">
+              <img class="img-fluid rounded img-thumbnail" src="./src/assets/images/{{movie.Poster}}" alt="Batman">
+            </div>
+            <div class="col-9">
+              <div class="row">
+                <div class="col-12">
+                  <h2 class="border-bottom pb-2">{{movie.Title}}</h2>
+                </div>
+                <div class="col-12 d-flex flex-column">
+                  <div class="row">
+                    <div class="col-6 text-left">
+                      <p><span class="rating">PG-13</span> <span class="runtime">140 min</span></p>
+                    </div>
+                    <div class="col-6 text-right">
+                      <p>{{movie.Year}}</p>
+                    </div>
+                    <div class="col-12">
+                      <p>After training with his mentor, Batman begins his fight to free crime-ridden Gotham City from corruption.</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 text-right">
+                      <a href="https://www.imdb.com/title/{{movie.imdbID}}" class="btn btn-warning align-self-end">View on IMDB</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <p class="muted-text small">{{footerCopyright}}</p>
+    </div>
+  </div>
+</div>
