@@ -5,17 +5,21 @@
     </div>
     <div class="card-body">
       <div class="row">
-        <div class="col-12 text-right mb-3">
-          <a href="#" class="btn btn-primary active mr-2">1980's</a>
-          <a href="#" class="btn btn-primary active mr-2">1990's</a>
-          <a href="#" class="btn btn-secondary">2000's</a>
+        <div class="col-6 text-left">
+          <strong>Filter:</strong> {{filterName}}
+        </div>
+        <div class="col-6 text-right mb-3">
+          <button (click)="filterMoviesByDecade(null);" class="btn btn-primary decade mr-2">All</button>
+          <button (click)="filterMoviesByDecade('1980');" class="btn btn-primary decade mr-2">1980's</button>
+          <button (click)="filterMoviesByDecade('1990');" class="btn btn-primary decade mr-2">1990's</button>
+          <button (click)="filterMoviesByDecade('2000');" class="btn btn-primary decade">2000's</button>
         </div>
       </div>
-      <div *ngFor="let movie of movies" class="card mb-4 card-dark">
+      <div *ngFor="let movie of loadedMovies" class="card mb-4 card-dark">
         <div class="card-body">
           <div class="row">
             <div class="col-3">
-              <img class="img-fluid rounded img-thumbnail" [src]="this.getNewMoviePosterUrl(movie.Poster)" alt="Batman">
+              <img title="{{movie.Title}}" class="img-fluid rounded img-thumbnail" [src]="getNewMoviePosterUrl(movie.Poster)" alt="Batman">
             </div>
             <div class="col-9">
               <div class="row">
@@ -39,7 +43,7 @@
                   </div>
                   <div class="row mt-2">
                     <div class="col-12 text-right">
-                      <a target="_blank" href="https://www.imdb.com/title/{{movie.imdbID}}" class="btn btn-warning">View on IMDB</a>
+                      <a title="View {{movie.Title}} on IMDB" target="_blank" href="https://www.imdb.com/title/{{movie.imdbID}}" class="btn btn-warning">View on IMDB</a>
                     </div>
                   </div>
                 </div>
