@@ -19,8 +19,11 @@
       <div *ngIf="!isLoaded" class="col-xs-12 margin-top-20">
           <p class="text-center">Loading Movies...</p>
       </div>
-      <div *ngIf="!loadedMovies.length && isLoaded" class="col-xs-12 margin-top-20">
-          <p class="alert alert-danger">
+      <div *ngIf="isLoaded && error" class="col-xs-12 margin-top-20">
+        <p class="alert alert-danger">Error: {{error}}</p>
+      </div>
+      <div *ngIf="!loadedMovies.length && isLoaded && !error" class="col-xs-12 margin-top-20">
+          <p class="alert alert-info">
               {{noMovieErrorMessage}}
           </p>
       </div>

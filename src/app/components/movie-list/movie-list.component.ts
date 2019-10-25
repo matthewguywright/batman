@@ -14,6 +14,7 @@ export class MovieListComponent implements OnInit {
     noMovieErrorMessage: string;
     masterMovieList: Movie[];
     filterName: string = 'All';
+    error: string = null;
     isLoaded: boolean = false;
     movies: IMovieDetails[] = [];
     loadedMovies: IMovieDetails[] = [];
@@ -25,7 +26,7 @@ export class MovieListComponent implements OnInit {
 
     ngOnInit() {
         this.footerCopyright ='Copyright 2019. All images and logos belong to their respective owners.';
-        this.noMovieErrorMessage = 'No movies are loaded. We apologize for the inconvenience. - Alfred';
+        this.noMovieErrorMessage = 'No movies to load. We apologize for the inconvenience. - Alfred';
 
         this.decadeButtons = [
           { label: 'All', decade: null},
@@ -39,11 +40,21 @@ export class MovieListComponent implements OnInit {
             this.masterMovieList = data.Search;
 
             for(let i = 0, il = this.masterMovieList.length; i < il; i++) {
-              this._ombdService.getMovie(this.masterMovieList[i].imdbID).subscribe((movie: IMovieDetails) => {
-                  this.movies = [...this.movies, movie];
-                  this.loadedMovies = this.movies;
-                  this.isLoaded = true;
-              });
+              this._ombdService.getMovie(this.masterMovieList[i].imdbID)
+                .subscribe(
+                  (movie: IMovieDetails) => {
+                    this.error = null;
+                    this.movies = [...this.movies, movie];
+                    this.loadedMovies = this.movies;
+                    this.isLoaded = true;
+                  },
+                  error => {
+                    this.error = error;
+                  },
+                  () => {
+                    this.isLoaded = true;
+                  }
+                );
             }
           });
     }
