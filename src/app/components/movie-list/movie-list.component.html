@@ -4,10 +4,10 @@
       {{headerTitle}}
     </div>
     <div class="panel-body">
-      <div *ngIf="movies.length" class="col-6 text-left">
+      <div *ngIf="movies.length && isLoaded" class="col-xs-12 col-lg-6 text-left">
         <strong>Filter:</strong> {{filterName}}
       </div>
-      <div *ngIf="movies.length" class="col-6 text-right mb-3">
+      <div *ngIf="movies.length && isLoaded" class="col-xs-12 col-lg-6 text-right">
         <span *ngFor="let button of decadeButtons" class="margin-left">
           <app-decade-button
             (change)="filterMoviesByDecade($event)"
@@ -16,39 +16,42 @@
           </app-decade-button>
         </span>
       </div>
-      <div *ngIf="!movies.length" class="col-xs-12 col-md-8 col-md-offset-2">
-          <p class="alert alert-danger">
+      <div *ngIf="!isLoaded" class="col-xs-12 margin-top-20">
+          <p class="text-center">Loading Movies...</p>
+      </div>
+      <div *ngIf="!loadedMovies.length && isLoaded" class="col-xs-12 margin-top-20">
+          <p class="alert alert-info">
               {{noMovieErrorMessage}}
           </p>
       </div>
-      <div *ngIf="movies.length" class="col-xs-12 col-md-8 col-md-offset-2">
-        <div *ngFor="let movie of loadedMovies" class="panel panel-default card-dark">
+      <div *ngIf="loadedMovies.length && isLoaded" class="col-xs-12 margin-top-20">
+        <div *ngFor="let movie of loadedMovies" class="panel panel-default">
           <div class="panel-body">
             <div class="col-xs-3">
-              <img title="{{movie.Title}}" class="img-responsive rounded img-thumbnail" [src]="getNewMoviePosterUrl(movie.Poster)" alt="Batman">
+              <img title="{{movie.Title}}" class="img-responsive img-thumbnail" [src]="getNewMoviePosterUrl(movie.Poster)" alt="Batman">
             </div>
             <div class="col-xs-9">
               <div class="row">
-                <div class="col-12">
-                  <h2 class="border-bottom pb-2">{{movie.Title}}</h2>
+                <div class="col-xs-12">
+                  <h2 class="border-bottom">{{movie.Title}}</h2>
                 </div>
-                <div class="col-12">
+                <div class="col-xs-12">
                   <div class="row">
-                    <div class="col-6 text-left">
+                    <div class="col-xs-6 text-left">
                       <p>
-                        <span class="rating badge badge-secondary mr-3">{{movie.Rated}}</span>
+                        <span class="rating badge badge-secondary margin-right">{{movie.Rated}}</span>
                         <span class="runtime">{{movie.Runtime}}</span>
                       </p>
                     </div>
-                    <div class="col-6 text-right">
+                    <div class="col-xs-6 text-right">
                       <p>{{movie.Released}}</p>
                     </div>
-                    <div class="col-12">
+                    <div class="col-xs-12 margin-top">
                       <p>{{movie.Plot}}</p>
                     </div>
                   </div>
-                  <div class="row mt-2">
-                    <div class="col-12 text-right">
+                  <div class="row margin-top">
+                    <div class="col-xs-12 text-right">
                       <a title="View {{movie.Title}} on IMDB" target="_blank" href="https://www.imdb.com/title/{{movie.imdbID}}" class="btn btn-warning">View on IMDB</a>
                     </div>
                   </div>
@@ -59,8 +62,8 @@
         </div>
       </div>
     </div>
-    <div class="card-footer">
-      <p class="muted-text small">{{footerCopyright}}</p>
+    <div class="panel-footer text-center">
+      <p class="small">{{footerCopyright}}</p>
     </div>
   </div>
 </div>

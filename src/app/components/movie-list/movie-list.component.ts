@@ -14,6 +14,7 @@ export class MovieListComponent implements OnInit {
     noMovieErrorMessage: string;
     masterMovieList: Movie[];
     filterName: string = 'All';
+    isLoaded: boolean = false;
     movies: IMovieDetails[] = [];
     loadedMovies: IMovieDetails[] = [];
     localPosterImageUrl: string = '/assets/images/posters/';
@@ -39,6 +40,7 @@ export class MovieListComponent implements OnInit {
               this._ombdService.getMovie(this.masterMovieList[i].imdbID).subscribe((movie: IMovieDetails) => {
                   this.movies = [...this.movies, movie];
                   this.loadedMovies = this.movies;
+                  this.isLoaded = true;
               });
             }
           });
