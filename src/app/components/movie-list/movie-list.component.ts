@@ -18,12 +18,7 @@ export class MovieListComponent implements OnInit {
     movies: IMovieDetails[] = [];
     loadedMovies: IMovieDetails[] = [];
     localPosterImageUrl: string = '/assets/images/posters/';
-    decadeButtons: Btn[] = [
-      { label: 'All', decade: null},
-      { label: '1980\'s', decade: '1980'},
-      { label: '1990\'s', decade: '1990'},
-      { label: '2000\'s', decade: '2000'}
-    ];
+    decadeButtons: Btn[] = [];
 
     constructor(private _ombdService: OmdbService, private elm: ElementRef) {
     }
@@ -31,6 +26,13 @@ export class MovieListComponent implements OnInit {
     ngOnInit() {
         this.footerCopyright ='Copyright 2019. All images and logos belong to their respective owners.';
         this.noMovieErrorMessage = 'No movies are loaded. We apologize for the inconvenience. - Alfred';
+
+        this.decadeButtons = [
+          { label: 'All', decade: null},
+          { label: '1980\'s', decade: '1980'},
+          { label: '1990\'s', decade: '1990'},
+          { label: '2000\'s', decade: '2000'}
+        ];
 
         this._ombdService.getAllMovies()
           .subscribe((data: any) => {

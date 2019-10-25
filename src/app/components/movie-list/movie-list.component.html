@@ -20,7 +20,7 @@
           <p class="text-center">Loading Movies...</p>
       </div>
       <div *ngIf="!loadedMovies.length && isLoaded" class="col-xs-12 margin-top-20">
-          <p class="alert alert-info">
+          <p class="alert alert-danger">
               {{noMovieErrorMessage}}
           </p>
       </div>
@@ -33,7 +33,7 @@
             <div class="col-xs-9">
               <div class="row">
                 <div class="col-xs-12">
-                  <h2 class="border-bottom">{{movie.Title}}</h2>
+                  <h2 class="border-bottom padding-bottom">{{movie.Title}}</h2>
                 </div>
                 <div class="col-xs-12">
                   <div class="row">
@@ -46,7 +46,9 @@
                     <div class="col-xs-6 text-right">
                       <p>{{movie.Released}}</p>
                     </div>
-                    <div class="col-xs-12 margin-top">
+                  </div>
+                  <div class="row margin-top">
+                    <div class="col-xs-12">
                       <p>{{movie.Plot}}</p>
                     </div>
                   </div>
