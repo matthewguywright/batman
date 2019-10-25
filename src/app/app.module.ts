@@ -5,11 +5,13 @@ import { AppComponent } from './app.component';
 
 import { MovieListComponent } from './components/movie-list/movie-list.component';
 import {OmdbService} from "./components/movie-list/omdb.service";
+import { DecadeButtonComponent } from './components/decade-button/decade-button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MovieListComponent
+    MovieListComponent,
+    DecadeButtonComponent
   ],
   imports: [
     BrowserModule,

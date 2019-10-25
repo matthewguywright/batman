@@ -1,27 +1,33 @@
-<div class="col-9 mx-auto">
-  <div class="card mt-4 mb-4">
-    <div class="card-header">
+<div class="col-xs-12 col-md-8 col-md-offset-2">
+  <div class="panel panel-default">
+    <div class="panel-heading">
       {{headerTitle}}
     </div>
-    <div class="card-body">
-      <div class="row">
-        <div class="col-6 text-left">
-          <strong>Filter:</strong> {{filterName}}
-        </div>
-        <div class="col-6 text-right mb-3">
-          <button (click)="filterMoviesByDecade(null);" class="btn btn-primary decade mr-2">All</button>
-          <button (click)="filterMoviesByDecade('1980');" class="btn btn-primary decade mr-2">1980's</button>
-          <button (click)="filterMoviesByDecade('1990');" class="btn btn-primary decade mr-2">1990's</button>
-          <button (click)="filterMoviesByDecade('2000');" class="btn btn-primary decade">2000's</button>
-        </div>
+    <div class="panel-body">
+      <div *ngIf="movies.length" class="col-6 text-left">
+        <strong>Filter:</strong> {{filterName}}
       </div>
-      <div *ngFor="let movie of loadedMovies" class="card mb-4 card-dark">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-3">
-              <img title="{{movie.Title}}" class="img-fluid rounded img-thumbnail" [src]="getNewMoviePosterUrl(movie.Poster)" alt="Batman">
+      <div *ngIf="movies.length" class="col-6 text-right mb-3">
+        <span *ngFor="let button of decadeButtons" class="margin-left">
+          <app-decade-button
+            (change)="filterMoviesByDecade($event)"
+            [lbl]="button.label"
+            [decade]="button.decade">
+          </app-decade-button>
+        </span>
+      </div>
+      <div *ngIf="!movies.length" class="col-xs-12 col-md-8 col-md-offset-2">
+          <p class="alert alert-danger">
+              {{noMovieErrorMessage}}
+          </p>
+      </div>
+      <div *ngIf="movies.length" class="col-xs-12 col-md-8 col-md-offset-2">
+        <div *ngFor="let movie of loadedMovies" class="panel panel-default card-dark">
+          <div class="panel-body">
+            <div class="col-xs-3">
+              <img title="{{movie.Title}}" class="img-responsive rounded img-thumbnail" [src]="getNewMoviePosterUrl(movie.Poster)" alt="Batman">
             </div>
-            <div class="col-9">
+            <div class="col-xs-9">
               <div class="row">
                 <div class="col-12">
                   <h2 class="border-bottom pb-2">{{movie.Title}}</h2>
@@ -30,8 +36,8 @@
                   <div class="row">
                     <div class="col-6 text-left">
                       <p>
-                          <span class="rating badge badge-secondary mr-3">{{movie.Rated}}</span>
-                          <span class="runtime">{{movie.Runtime}}</span>
+                        <span class="rating badge badge-secondary mr-3">{{movie.Rated}}</span>
+                        <span class="runtime">{{movie.Runtime}}</span>
                       </p>
                     </div>
                     <div class="col-6 text-right">
