@@ -1,37 +1,39 @@
 <div class="col-xs-12 col-md-8 col-md-offset-2">
   <div class="panel panel-default">
-    <div class="panel-heading">
-      {{headerTitle}}
-    </div>
+    <header class="panel-heading">
+      <h1>{{headerTitle}}</h1>
+    </header>
     <div class="panel-body">
       <div *ngIf="movies.length && isLoaded" class="col-xs-12 col-lg-6 text-left">
         <strong>Filter:</strong> {{filterName}}
       </div>
-      <div *ngIf="movies.length && isLoaded" class="col-xs-12 col-lg-6 text-right">
-        <span *ngFor="let button of decadeButtons" class="margin-left">
-          <app-decade-button
-            (change)="filterMoviesByDecade($event)"
-            [lbl]="button.label"
-            [decade]="button.decade">
-          </app-decade-button>
-        </span>
-      </div>
-      <div *ngIf="!isLoaded" class="col-xs-12 margin-top-20">
+      <nav aria-label="site" *ngIf="movies.length && isLoaded" class="col-xs-12 col-lg-6 text-right">
+        <ul class="list-group list-inline list-unstyled">
+          <li class="list-group-item" *ngFor="let button of decadeButtons" class="margin-left">
+            <app-decade-button
+              (change)="filterMoviesByDecade($event)"
+              [lbl]="button.label"
+              [decade]="button.decade">
+            </app-decade-button>
+          </li>
+        </ul>
+      </nav>
+      <main id="main" tabindex="-1" *ngIf="!isLoaded" class="col-xs-12 margin-top-20">
           <p class="text-center">Loading Movies...</p>
-      </div>
-      <div *ngIf="isLoaded && error" class="col-xs-12 margin-top-20">
+      </main>
+      <main id="main" tabindex="-1" *ngIf="isLoaded && error" class="col-xs-12 margin-top-20">
         <p class="alert alert-danger">Error: {{error}}</p>
-      </div>
-      <div *ngIf="!loadedMovies.length && isLoaded && !error" class="col-xs-12 margin-top-20">
+      </main>
+      <main id="main" tabindex="-1" *ngIf="!loadedMovies.length && isLoaded && !error" class="col-xs-12 margin-top-20">
           <p class="alert alert-info">
               {{noMovieErrorMessage}}
           </p>
-      </div>
-      <div *ngIf="loadedMovies.length && isLoaded" class="col-xs-12 margin-top-20">
+      </main>
+      <main *ngIf="loadedMovies.length && isLoaded" class="col-xs-12 margin-top-20">
         <div *ngFor="let movie of loadedMovies" class="panel panel-default">
           <div class="panel-body">
             <div class="col-xs-3">
-              <img title="{{movie.Title}}" class="img-responsive img-thumbnail" [src]="getNewMoviePosterUrl(movie.Poster)" alt="Batman">
+              <img title="{{movie.Title}}" class="img-responsive img-thumbnail" [src]="getNewMoviePosterUrl(movie.Poster)" alt="{{movie.Title}}">
             </div>
             <div class="col-xs-9">
               <div class="row">
@@ -65,10 +67,10 @@
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
-    <div class="panel-footer text-center">
+    <footer class="panel-footer text-center">
       <p class="small">{{footerCopyright}}</p>
-    </div>
+    </footer>
   </div>
 </div>

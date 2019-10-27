@@ -1,1 +1,5 @@
-<button (click)="clickHandler()" class="btn btn-primary decade mr-2">{{label}}</button>
+<a title="View {{label}} Batman Movies" (click)="clickHandler()" class="btn btn-primary decade">
+  <span class="sr-only">View </span>
+  {{label}}
+  <span class="sr-only"> Batman Movies</span>
+</a>
