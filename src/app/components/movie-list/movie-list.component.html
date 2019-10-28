@@ -3,10 +3,10 @@
     <div class="col-xs-12 align-right">
       <ul class="list-group list-inline list-unstyled text-right">
         <li>
-          <a title="Set Locale to English" href="#" (click)="setLocale('en');">EN</a>
+          <a title="Set Locale to English" href="#" (click)="setLocale($event, 'en');">EN</a>
         </li>
         <li>
-          <a title="Establecer configuración regional en español" href="#" (click)="setLocale('sp');">ESP</a>
+          <a title="Establecer configuración regional en español" href="#" (click)="setLocale($event,'sp');">ESP</a>
         </li>
       </ul>
     </div>

@@ -85,8 +85,9 @@ export class MovieListComponent implements OnInit {
         }
     }
 
-    setLocale = (lang: string) => {
+    setLocale = (event, lang: string) => {
       this.onLanguageChange.emit(lang);
+      event.preventDefault();
     }
 }
 export interface IMovie {
