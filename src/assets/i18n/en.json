@@ -3,8 +3,11 @@
   "loadingMessage": "Loading Movies...",
   "decadeFilter": "Filter",
   "decadeBtn": {
-    "decade": {
-      "all": "All"
+    "button": {
+      "all": "All",
+      "1980": "1980's",
+      "1990": "1990's",
+      "2000": "2000's"
     },
     "labelPrefix": "View",
     "labelSuffix": "Batman Movies"

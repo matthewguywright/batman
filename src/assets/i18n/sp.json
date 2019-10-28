@@ -3,8 +3,11 @@
   "loadingMessage": "Cargando películas...",
   "decadeFilter": "Filtrar",
   "decadeBtn": {
-    "decade": {
-      "all": "Todas"
+    "button": {
+      "all": "Todos",
+      "1980": "1980's",
+      "1990": "1990's",
+      "2000": "2000's"
     },
     "labelPrefix": "Mirar",
     "labelSuffix": "Batman Películas"

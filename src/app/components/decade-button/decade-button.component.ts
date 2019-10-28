@@ -7,16 +7,23 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./decade-button.component.sass']
 })
 export class DecadeButtonComponent implements OnInit {
-  @Input('lbl')
-  label: string;
   @Input()
   decade: string;
   @Output()
   change: EventEmitter<string> = new EventEmitter<string>();
+  buttonLabel: string;
 
   constructor(private translate: TranslateService) { }
 
   ngOnInit() {
+      this.setButtonLabel(this.decade);
+  }
+
+  setButtonLabel = (decade) => {
+    const keyVal = `decadeBtn.button.${decade}`;
+    this.translate.stream(keyVal).subscribe((value) => {
+      this.buttonLabel = value;
+    });
   }
 
   clickHandler() {

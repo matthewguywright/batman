@@ -26,10 +26,10 @@ export class MovieListComponent implements OnInit {
 
     ngOnInit() {
         this.decadeButtons = [
-          { label: 'All', decade: null},
-          { label: '1980\'s', decade: '1980'},
-          { label: '1990\'s', decade: '1990'},
-          { label: '2000\'s', decade: '2000'}
+          { decade: 'all'},
+          { decade: '1980'},
+          { decade: '1990'},
+          { decade: '2000'}
         ];
 
         this.ombdService.getAllMovies()
@@ -56,14 +56,21 @@ export class MovieListComponent implements OnInit {
           });
     }
 
+    setFilterName = (decade) => {
+        const keyVal = `decadeBtn.button.${decade}`;
+        this.translate.stream(keyVal).subscribe((value) => {
+          this.filterName = value;
+        });
+    }
+
     getNewMoviePosterUrl(url: string) {
         const imgFileName = url.replace('https://m.media-amazon.com/images/M/', '');
         return `${this.localPosterImageUrl}${imgFileName}`;
     }
 
     filterMoviesByDecade(decade: string) {
-        if(decade) {
-            this.filterName = `${decade}'s`;
+        if (decade && decade !== 'all') {
+            this.setFilterName(decade);
             this.loadedMovies = _.filter(this.movies, ({Released}) => {
                 const releaseYear = Released.substr(-4, 4);
                 if(decade.substr(0,1) === '2') {
@@ -73,7 +80,7 @@ export class MovieListComponent implements OnInit {
                 }
             });
         } else {
-            this.filterName = 'All';
+            this.setFilterName('all');
             this.loadedMovies = this.movies;
         }
     }
@@ -100,5 +107,4 @@ export interface IMovieDetails {
 }
 export interface Btn {
   decade: string;
-  label: string;
 }

@@ -20,11 +20,10 @@
         <strong>{{'decadeFilter' | translate}}:</strong> {{filterName}}
       </div>
       <nav aria-label="site" *ngIf="movies.length && isLoaded" class="col-xs-12 col-lg-6 text-right">
-        <ul class="list-group list-inline list-unstyled">
+        <ul class="list-group list-inline list-unstyled button-list">
           <li class="list-group-item" *ngFor="let button of decadeButtons" class="margin-left">
             <app-decade-button
               (change)="filterMoviesByDecade($event)"
-              [lbl]="button.label"
               [decade]="button.decade">
             </app-decade-button>
           </li>
