@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-decade-button',
@@ -13,7 +14,7 @@ export class DecadeButtonComponent implements OnInit {
   @Output()
   change: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private translate: TranslateService) { }
 
   ngOnInit() {
   }

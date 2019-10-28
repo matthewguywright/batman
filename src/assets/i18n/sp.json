@@ -1,0 +1,18 @@
+{
+  "headerTitle": "Holy Bunions Batman! - Batman Máquina Del Tiempo (esp)",
+  "loadingMessage": "Cargando películas...",
+  "decadeFilter": "Filtrar",
+  "decadeBtn": {
+    "decade": {
+      "all": "Todas"
+    },
+    "labelPrefix": "Mirar",
+    "labelSuffix": "Batman Películas"
+  },
+  "imdbBtnTitle": "Ver en IMDB",
+  "footerCopyright": "Copyright 2019. Todas las imágenes y logotipos pertenecen a sus respectivos propietarios.",
+  "error": {
+    "title": "Error",
+    "noMovieErrorMessage": "No hay películas para cargar. Disculpe las molestias. - Alfred"
+  }
+}

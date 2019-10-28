@@ -1,7 +1,8 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
-import {OmdbService} from "./omdb.service";
-import {Movie} from "./movie.model";
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {OmdbService} from './omdb.service';
+import {Movie} from './movie.model';
 import _ from 'lodash';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
     selector: 'movie-list',
@@ -10,8 +11,7 @@ import _ from 'lodash';
 })
 export class MovieListComponent implements OnInit {
     @Input() headerTitle: string;
-    footerCopyright: string;
-    noMovieErrorMessage: string;
+    @Output() onLanguageChange: EventEmitter<string> = new EventEmitter<string>();
     masterMovieList: Movie[];
     filterName: string = 'All';
     error: string = null;
@@ -21,13 +21,10 @@ export class MovieListComponent implements OnInit {
     localPosterImageUrl: string = '/assets/images/posters/';
     decadeButtons: Btn[] = [];
 
-    constructor(private _ombdService: OmdbService, private elm: ElementRef) {
+    constructor(private ombdService: OmdbService, private elm: ElementRef, private translate: TranslateService) {
     }
 
     ngOnInit() {
-        this.footerCopyright ='Copyright 2019. All images and logos belong to their respective owners.';
-        this.noMovieErrorMessage = 'No movies to load. We apologize for the inconvenience. - Alfred';
-
         this.decadeButtons = [
           { label: 'All', decade: null},
           { label: '1980\'s', decade: '1980'},
@@ -35,12 +32,12 @@ export class MovieListComponent implements OnInit {
           { label: '2000\'s', decade: '2000'}
         ];
 
-        this._ombdService.getAllMovies()
+        this.ombdService.getAllMovies()
           .subscribe((data: any) => {
             this.masterMovieList = data.Search;
 
             for(let i = 0, il = this.masterMovieList.length; i < il; i++) {
-              this._ombdService.getMovie(this.masterMovieList[i].imdbID)
+              this.ombdService.getMovie(this.masterMovieList[i].imdbID)
                 .subscribe(
                   (movie: IMovieDetails) => {
                     this.error = null;
@@ -79,6 +76,10 @@ export class MovieListComponent implements OnInit {
             this.filterName = 'All';
             this.loadedMovies = this.movies;
         }
+    }
+
+    setLocale = (lang: string) => {
+      this.onLanguageChange.emit(lang);
     }
 }
 export interface IMovie {

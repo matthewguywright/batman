@@ -1,0 +1,18 @@
+{
+  "headerTitle": "Holy Bunions Batman! - Batman Time Machine (en)",
+  "loadingMessage": "Loading Movies...",
+  "decadeFilter": "Filter",
+  "decadeBtn": {
+    "decade": {
+      "all": "All"
+    },
+    "labelPrefix": "View",
+    "labelSuffix": "Batman Movies"
+  },
+  "imdbBtnTitle": "View on IMDB",
+  "footerCopyright": "Copyright 2019. All images and logos belong to their respective owners.",
+  "error": {
+    "title": "Error",
+    "noMovieErrorMessage": "No movies to load. We apologize for the inconvenience. - Alfred"
+  }
+}
