@@ -41,7 +41,7 @@
           </p>
       </main>
       <main *ngIf="loadedMovies.length && isLoaded" class="col-xs-12 margin-top-20">
-        <div *ngFor="let movie of loadedMovies" class="panel panel-default">
+        <div *ngFor="let movie of loadedMovies | orderByDate" class="panel panel-default">
           <div class="panel-body">
             <div class="col-xs-3">
               <img title="{{movie.Title}}" class="img-responsive img-thumbnail" [src]="getNewMoviePosterUrl(movie.Poster)" alt="{{movie.Title}}">

@@ -9,12 +9,14 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
 import {OmdbService} from './components/movie-list/omdb.service';
 import { DecadeButtonComponent } from './components/decade-button/decade-button.component';
+import { OrderByDatePipe } from './components/movie-list/order-by-date.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     MovieListComponent,
-    DecadeButtonComponent
+    DecadeButtonComponent,
+    OrderByDatePipe
   ],
   imports: [
     BrowserModule,
